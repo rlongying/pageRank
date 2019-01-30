@@ -1,13 +1,22 @@
 #include <iostream>
+#include <fstream>
 #include "matrix.hpp"
 
 using namespace std;
 
 
 int main() {
-    cout << "Hello, World!" << endl;
 
-    matrix test({2, 1, 3, 4});
+    ifstream readMatrix("../connectivity.txt");
+
+    vector<double> dataV;
+    int data;
+
+    while(readMatrix >> data){
+        dataV.push_back(data);
+    }
+
+    matrix test(dataV);
     test.print();
 
 //    test.set_value(4, 4, 1.0);

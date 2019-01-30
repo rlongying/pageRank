@@ -24,8 +24,8 @@ matrix::matrix(const std::vector<double> &input) {
 
     for (int i = 0; i < squareRoot; i++) {
         //initialize each row from the input
-        //rowData(input.begin() + i * squareRoot is the begin place, included
-        //input.begin() + (i + 1) * squareRoot is the end place, not included
+        //rowData(input.begin() + i * squareRoot: is the begin place, included
+        //input.begin() + (i + 1) * squareRoot: is the end place, not included
         std::vector<double>
                 rowData(input.begin() + i * squareRoot, input.begin() + (i + 1) * squareRoot);
 
@@ -68,7 +68,7 @@ matrix::matrix(int r, int c) {
     }
 }
 
-void matrix::set_value(int row, int col, double newVal) const {
+void matrix::set_value(const int row, const int col, double newVal) {
     validatePositive(row);
     validatePositive(col);
 

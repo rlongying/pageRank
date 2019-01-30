@@ -46,7 +46,7 @@ public:
      * @param col :the column of the target, start from 1
      * @param newVal :new value
      */
-    void set_value(int row, int col, double newVal) const;
+    void set_value(const int row, const int col, double newVal);
 
     /**
      * get the value from specified location (row, col)
