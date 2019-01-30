@@ -10,7 +10,7 @@
 
 class matrix {
 
-    std::vector<std::vector<double>> value;
+    std::vector<std::vector<double>> dataMatrix;
 
 public:
 
@@ -34,34 +34,40 @@ public:
     matrix(int r, int c);
 
     /**
-     * populate a n*n matrix by a given array
-     * throw exception if the size of input array does not have a square root
+     * populate a n*n matrix by a given vector
+     * throw exception if the size of input vector does not have a square root
+     * @param input : input vector
      */
-    matrix(double input[]);
+    matrix(const std::vector<double> &input);
 
     /**
      * set the value of specified (row, col) to a new value
-     * @param row :the row of the target
-     * @param col :the column of the target
+     * @param row :the row of the target, start from 1
+     * @param col :the column of the target, start from 1
      * @param newVal :new value
      */
-    void set_value(int row, int col, double newVal);
+    void set_value(int row, int col, double newVal) const;
 
     /**
      * get the value from specified location (row, col)
-     * @param row :target row
-     * @param col :target col
+     * @param row :target row, start from 1
+     * @param col :target col, start from 1
      * @return
      */
-    double get_value(int row, int col);
+    double get_value(int row, int col) const;
 
     /**
      * set all values in the matrix to 0.0
      */
     void clear();
+
+    void print() const;
+
     ~matrix();
 
 private:
+    void validatePositive(int size) const;
+
 
 };
 
