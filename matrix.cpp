@@ -210,5 +210,59 @@ void mySwap(matrix &first, matrix &second) {
     std::swap(first.dataMatrix, second.dataMatrix);
 }
 
+matrix &matrix::operator+=(const matrix &rhs) {
+    if (rhs.dataMatrix.empty() || dataMatrix.empty()) {
+        throw std::invalid_argument("matrix can not be empty");
+    }
+
+    //compare rows
+    if((dataMatrix.size() != rhs.dataMatrix.size()) ||
+            //compare columns
+                (dataMatrix[0].size() != rhs.dataMatrix[0].size())){
+
+        throw std::invalid_argument("two matrix are not of the same size!");
+    }
+
+    for(int i = 0; i < dataMatrix.size(); i++){
+        for(int j = 0; j < dataMatrix[i].size(); j++){
+            dataMatrix[i][j] += rhs.dataMatrix[i][j];
+        }
+    }
+
+    return *this;
+}
+
+matrix &matrix::operator-=(const matrix &rhs) {
+    if (rhs.dataMatrix.empty() || dataMatrix.empty()) {
+        throw std::invalid_argument("matrix can not be empty");
+    }
+
+    //compare rows
+    if((dataMatrix.size() != rhs.dataMatrix.size()) ||
+       //compare columns
+       (dataMatrix[0].size() != rhs.dataMatrix[0].size())){
+
+        throw std::invalid_argument("two matrix are not of the same size!");
+    }
+
+    for(int i = 0; i < dataMatrix.size(); i++){
+        for(int j = 0; j < dataMatrix[i].size(); j++){
+            dataMatrix[i][j] -= rhs.dataMatrix[i][j];
+        }
+    }
+
+    return *this;
+}
+
+matrix operator+(matrix lhs, const matrix &rhs) {
+    lhs += rhs;
+    return lhs;
+}
+
+matrix operator-(matrix lhs, const matrix &rhs) {
+    lhs -= rhs;
+    return lhs;
+}
+
 
 

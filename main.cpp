@@ -32,20 +32,15 @@ int main() {
     test3 = test;
     cout << "test 3" << endl << test3;
 
+    cout << (test + test2);
+    cout << (test - test2);
+    cout << (test + test3);
 
-////
-////    test.set_value(4, 4, 1.523);
-////    cout << test;
-//
-//
-//    cout << "compare matrix: " << (test == test2) << endl;
-//    cout << test++;
-//    cout << test;
-//    cout << ++test;
-//    cout << --test;
-//    cout << test;
-//    cout << test--;
-//    cout << test;
+    cout << "test 1" << endl << test;
+
+    cout <<"test 2" << endl << test2;
+
+    cout << "test 3" << endl << test3;
 
     return 0;
 }
