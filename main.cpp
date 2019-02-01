@@ -20,6 +20,34 @@ int main() {
         dataV.push_back(data);
     }
 
+    matrix test(dataV);
+    cout << test;
+    test.calc_importance();
+
+    q_matrix q_test(4);
+
+    matrix m;
+    m = 0.85 * test + (1- 0.85)* q_test;
+
+    cout << " m : " << endl << m;
+
+    rank_matrix r(4);
+
+    cout << " r : " << endl << r;
+
+    matrix temp(m);
+
+    matrix pre_temp;
+
+    temp = m * r;
+    cout << "temp before:" << endl << temp;
+    while(temp != pre_temp){
+        pre_temp = temp;
+        temp = m * temp;
+
+    }
+
+    cout << temp;
 //    std::vector<std::vector<double>> v1({{1, 2, 3}, {4, 5, 6}});
 //    std::vector<std::vector<double>> v2({{7, 8}, {9, 10},{11, 12}});
 //
@@ -45,7 +73,15 @@ int main() {
 //    cout << (test3);
 
 //    for(int v1)
-//    matrix test(dataV);
+
+//    test.calc_importance();
+//    cout << test;
+//
+//    cout << ( 0.8 * test);
+//    cout << ( test * 0.8);
+//    cout << ( test);
+//    cout << ( test *= 0.8);
+//    cout << " final test" << endl << test;
 //
 //    matrix test2(test);
 ////
@@ -70,16 +106,16 @@ int main() {
 //    cout << "test 3" << endl << test3;
 //
 
-    cout << isEqual(0.0, 0.1) << endl; //0
-    cout << isEqual(0.01, 0.01) << endl; //1
-    cout << isEqual(0.001, 0.0001) << endl;//0
-    cout << isEqual(1.2698, 1.2698) << endl;//1
-    cout << isEqual(1.2698, 1.2699) << endl;//0
-    cout << isEqual(1.2698, 1.2697) << endl;//0
-    cout << isEqual(1.269, 1.2699) << endl;//0
-    cout << isEqual(1.2698, 1.26985) << endl;//1
-    cout << isEqual(1.2698, 1.26983) << endl;//1
-    cout << isEqual(1.2698, 1.26988) << endl;//0
+//    cout << isEqual(0.0, 0.1) << endl; //0
+//    cout << isEqual(0.01, 0.01) << endl; //1
+//    cout << isEqual(0.001, 0.0001) << endl;//0
+//    cout << isEqual(1.2698, 1.2698) << endl;//1
+//    cout << isEqual(1.2698, 1.2699) << endl;//0
+//    cout << isEqual(1.2698, 1.2697) << endl;//0
+//    cout << isEqual(1.269, 1.2699) << endl;//0
+//    cout << isEqual(1.2698, 1.26985) << endl;//1
+//    cout << isEqual(1.2698, 1.26983) << endl;//1
+//    cout << isEqual(1.2698, 1.26988) << endl;//0
 
 //    rank_matrix q_test(4);
 //

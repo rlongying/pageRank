@@ -52,7 +52,7 @@ public:
      * @param col :the column of the target, start from 1
      * @param newVal :new value
      */
-    void set_value(const int row, const int col, double newVal);
+    void set_value(const int row, const int col, const double newVal);
 
     /**
      * get the value from specified location (row, col)
@@ -85,21 +85,42 @@ public:
 
     matrix &operator=(matrix other);
 
-    matrix &operator+=(const matrix &rhs);
+    matrix &operator+=(const matrix &rhm);
 
-    matrix &operator-=(const matrix &rhs);
+    matrix &operator-=(const matrix &rhm);
 
     /**
-     * overload *=, the
-     * @param rhs
+     * overload *=, multiply a matrix by a matrix
+     * @param rhm
      * @return
      */
-    matrix &operator*=(const matrix &rhs);
+    matrix &operator*=(const matrix &rhm);
+
+    /**
+     * scale a matrix
+     * @param rhs scaler
+     * @return
+     */
+    matrix &operator*=(const double &rhs);
 
     ~matrix();
 
-private:
+    /**
+     * convert this matrix to a probability matrix
+     * @return itself
+     */
     matrix& calc_importance();
+
+private:
+
+
+    /**
+     * sum of the value of a given column
+     * @param col  column number, start from 1
+     * @return the sum of the column
+     */
+    double sumColumn(int col) const;
+
     /**
      * output the matrix in a square format
      * @param os  output stream
@@ -120,6 +141,11 @@ private:
     friend matrix operator-(matrix lhm, const matrix &rhm);
 
     friend matrix operator*(matrix lhm, const matrix &rhm);
+
+    //overload * to scale the matrix
+    friend matrix operator*(const double& lhs, matrix rhm);
+    friend matrix operator*(matrix lhm, const double& rhs);
+
 };
 
 

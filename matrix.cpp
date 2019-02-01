@@ -70,7 +70,7 @@ matrix::matrix(int r, int c) {
     }
 }
 
-void matrix::set_value(const int row, const int col, double newVal) {
+void matrix::set_value(const int row, const int col, const double newVal) {
     validatePositive(row);
     validatePositive(col);
 
@@ -256,13 +256,13 @@ matrix operator-(matrix lhm, const matrix &rhm) {
     return lhm;
 }
 
-matrix &matrix::operator*=(const matrix &rhs) {
-    if (rhs.dataMatrix.empty() || dataMatrix.empty()) {
+matrix &matrix::operator*=(const matrix &rhm) {
+    if (rhm.dataMatrix.empty() || dataMatrix.empty()) {
         throw std::invalid_argument("matrix can not be empty");
     }
 
     //columns # of first operand should be equal to rows # of second operand
-    if((dataMatrix[0].size() != rhs.dataMatrix.size())){
+    if((dataMatrix[0].size() != rhm.dataMatrix.size())){
 
         throw std::invalid_argument
         ("number of columns of first operand should be equal to number of rows of second operand!");
@@ -270,14 +270,16 @@ matrix &matrix::operator*=(const matrix &rhs) {
 
     std::vector<std::vector<double>> temp;
 
+    //row numbers
     for(int i = 0; i < dataMatrix.size(); i++){
 
         std::vector<double> tempRow;
-        for(int j = 0; j < dataMatrix.size(); j++){
+        //column numbers
+        for(int j = 0; j < rhm.dataMatrix[0].size(); j++){
 
             double tempValue = 0.0;
-            for(int k = 0; k < dataMatrix[0].size(); k++){
-                tempValue += dataMatrix[i][k] * rhs.dataMatrix[k][j];
+            for(int k = 0; k < dataMatrix[i].size(); k++){
+                tempValue += dataMatrix[i][k] * rhm.dataMatrix[k][j];
             }
             //store every element of new matrix
             tempRow.push_back(tempValue);
@@ -294,6 +296,73 @@ matrix operator*(matrix lhm, const matrix &rhm) {
     lhm *= rhm;
     return lhm;
 }
+
+double matrix::sumColumn(int col) const {
+    validatePositive(col);
+
+    if(!dataMatrix.empty()){
+        if(dataMatrix[0].size() < col){
+            throw std::invalid_argument("the input column number if too large when sum the column!");
+        }
+    }
+
+    double sum = 0.0;
+
+    for(int i = 0; i < dataMatrix.size(); i++){
+        sum += dataMatrix[i][col-1];
+    }
+
+    return sum;
+}
+
+matrix &matrix::calc_importance() {
+    if(!dataMatrix.empty()){
+
+        //columns
+        for(int i = 0; i < dataMatrix[0].size(); i++){
+            double sum = sumColumn(i+1);
+
+            //rows
+            double rows = dataMatrix.size();
+            double zero_replacement = 1.0 / rows;
+            for(int j = 0; j < rows; j++){
+                if(isEqual(0.0, sum)){
+                    dataMatrix[j][i] = zero_replacement;
+                }else{
+                    dataMatrix[j][i] /= sum;
+                }
+            }
+        }
+    }
+
+    return *this;
+}
+
+matrix operator*(const double& lhs, matrix rhm) {
+    return operator*(rhm, lhs);
+}
+
+matrix operator*(matrix lhm, const double &rhs) {
+    lhm *= rhs;
+    return lhm;
+}
+
+matrix &matrix::operator*=(const double &rhs) {
+
+    if(isEqual(0.0, rhs)){
+        (*this).clear();
+        return *this;
+    }
+
+    for (int i = 0; i < dataMatrix.size(); i++) {
+        for(int j = 0; j < dataMatrix[i].size(); j++){
+            dataMatrix[i][j] *= rhs;
+        }
+    }
+    return *this;
+}
+
+
 
 
 
