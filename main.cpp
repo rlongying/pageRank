@@ -70,15 +70,20 @@ int main() {
 //    cout << "test 3" << endl << test3;
 //
 
-//    cout << isEqual(0.0, 0.1) << endl;
-//    cout << isEqual(0.01, 0.01) << endl;
-//    cout << isEqual(0.001, 0.0001) << endl;
-//    cout << isEqual(0.0000001, 0.00001) << endl;
-//    cout << isEqual(0.000001, 0.0000021) << endl;
+    cout << isEqual(0.0, 0.1) << endl; //0
+    cout << isEqual(0.01, 0.01) << endl; //1
+    cout << isEqual(0.001, 0.0001) << endl;//0
+    cout << isEqual(1.2698, 1.2698) << endl;//1
+    cout << isEqual(1.2698, 1.2699) << endl;//0
+    cout << isEqual(1.2698, 1.2697) << endl;//0
+    cout << isEqual(1.269, 1.2699) << endl;//0
+    cout << isEqual(1.2698, 1.26985) << endl;//1
+    cout << isEqual(1.2698, 1.26983) << endl;//1
+    cout << isEqual(1.2698, 1.26988) << endl;//0
 
-    rank_matrix q_test(4);
-
-    cout << q_test << endl;
+//    rank_matrix q_test(4);
+//
+//    cout << q_test << endl;
 
     return 0;
 }

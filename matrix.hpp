@@ -99,7 +99,7 @@ public:
     ~matrix();
 
 private:
-
+    matrix& calc_importance();
     /**
      * output the matrix in a square format
      * @param os  output stream

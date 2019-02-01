@@ -142,8 +142,7 @@ bool operator==(const matrix &lhm, const matrix &rhm) {
         }
 
         for (int j = 0; j < lhm.dataMatrix[i].size(); j++) {
-            double d1 = lhm.dataMatrix[i][j];
-            double d2 = rhm.dataMatrix[i][j];
+
             if (!isEqual(lhm.dataMatrix[i][j], rhm.dataMatrix[i][j])) {
                 return false;
             }
