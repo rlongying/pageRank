@@ -61,6 +61,19 @@ public:
      */
     void clear();
 
+    /**
+     * increment every element of matrix by 1.0
+     * @return itself
+     */
+    matrix& operator++();
+    matrix operator++(int);
+
+    /**
+     * decrement every element of matrix by 1.0
+     * @return itself
+     */
+    matrix& operator--();
+    matrix operator--(int);
 //    void print() const;
     ~matrix();
 
@@ -73,14 +86,12 @@ private:
      * @param data matrix to be output
      * @return
      */
-    friend std::ostream& operator<< (std::ostream& os, const matrix& data );
+    friend std::ostream &operator<<(std::ostream &os, const matrix &data);
 
     //compare two matrix
-    friend bool operator== (const matrix& lhs, const matrix& rhs);
+    friend bool operator==(const matrix &lhs, const matrix &rhs);
 
-    friend bool operator!= (const matrix& lhs, const matrix& rhs);
-
-//    bool isEqual(double &d, double &d1);
+    friend bool operator!=(const matrix &lhs, const matrix &rhs);
 };
 
 

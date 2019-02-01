@@ -164,5 +164,41 @@ bool operator!=(const matrix &lhs, const matrix &rhs) {
     return !(lhs == rhs);
 }
 
+matrix &matrix::operator++() {
+    if(!dataMatrix.empty()){
+        for(int i = 0; i < dataMatrix.size(); i++){
+            for(int j = 0; j < dataMatrix[i].size(); j++){
+                dataMatrix[i][j] += 1.0;
+            }
+        }
+
+    }
+    return *this;
+}
+
+matrix matrix::operator++(int) {
+    matrix temp(*this);
+    operator++();
+    return temp;
+}
+
+matrix &matrix::operator--() {
+    if(!dataMatrix.empty()){
+        for(int i = 0; i < dataMatrix.size(); i++){
+            for(int j = 0; j < dataMatrix[i].size(); j++){
+                dataMatrix[i][j] -= 1.0;
+            }
+        }
+
+    }
+    return *this;
+}
+
+matrix matrix::operator--(int) {
+    matrix temp(*this);
+    operator--();
+    return temp;
+}
+
 
 
