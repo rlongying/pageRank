@@ -43,36 +43,36 @@ int main() {
 //    cout << (test3);
 
 //    for(int v1)
-//    matrix test(dataV);
-//
-//    matrix test2(test);
+    matrix test(dataV);
+
+    matrix test2(test);
 //
 ////    cout << test;
-//    test.set_value(4, 4, 0.01);
-//    cout << "test 1" << endl << test;
-//
-//    cout <<"test 2" << endl << test2;
-//
-//    matrix test3;
-//    test3 = test;
-//    cout << "test 3" << endl << test3;
-//
-//    cout << (test + test2);
-//    cout << (test - test2);
-//    cout << (test + test3);
-//
-//    cout << "test 1" << endl << test;
-//
-//    cout <<"test 2" << endl << test2;
-//
-//    cout << "test 3" << endl << test3;
+    test.set_value(4, 4, 0.01);
+    cout << "test 1" << endl << test;
+
+    cout <<"test 2" << endl << test2;
+
+    matrix test3;
+    test3 = test;
+    cout << "test 3" << endl << test3;
+
+    cout << (test + test2);
+    cout << (test - test2);
+    cout << (test + test3);
+
+    cout << "test 1" << endl << test;
+
+    cout <<"test 2" << endl << test2;
+
+    cout << "test 3" << endl << test3;
 //
 
-    cout << isEqual(0.0, 0.1) << endl;
-    cout << isEqual(0.01, 0.01) << endl;
-    cout << isEqual(0.001, 0.0001) << endl;
-    cout << isEqual(0.0000001, 0.00001) << endl;
-    cout << isEqual(0.000001, 0.0000021) << endl;
+//    cout << isEqual(0.0, 0.1) << endl;
+//    cout << isEqual(0.01, 0.01) << endl;
+//    cout << isEqual(0.001, 0.0001) << endl;
+//    cout << isEqual(0.0000001, 0.00001) << endl;
+//    cout << isEqual(0.000001, 0.0000021) << endl;
 
 
     return 0;

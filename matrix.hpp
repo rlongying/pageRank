@@ -88,12 +88,16 @@ public:
 
     matrix &operator-=(const matrix &rhs);
 
+    /**
+     * overload *=, the
+     * @param rhs
+     * @return
+     */
     matrix &operator*=(const matrix &rhs);
 
     ~matrix();
 
 private:
-    void validatePositive(int size) const;
 
     /**
      * output the matrix in a square format
@@ -104,17 +108,17 @@ private:
     friend std::ostream &operator<<(std::ostream &os, const matrix &data);
 
     //compare two matrix
-    friend bool operator==(const matrix &lhs, const matrix &rhs);
+    friend bool operator==(const matrix &lhm, const matrix &rhm);
 
-    friend bool operator!=(const matrix &lhs, const matrix &rhs);
+    friend bool operator!=(const matrix &lhm, const matrix &rhm);
 
     friend void mySwap(matrix &first, matrix &second);
 
-    friend matrix operator+(matrix lhs, const matrix &rhs);
+    friend matrix operator+(matrix lhm, const matrix &rhm);
 
-    friend matrix operator-(matrix lhs, const matrix &rhs);
+    friend matrix operator-(matrix lhm, const matrix &rhm);
 
-    friend matrix operator*(matrix lhs, const matrix &rhs);
+    friend matrix operator*(matrix lhm, const matrix &rhm);
 };
 
 

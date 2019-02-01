@@ -111,13 +111,6 @@ double matrix::get_value(int row, int col) const {
 
 }
 
-void matrix::validatePositive(int size) const {
-    if (size <= 0) {
-        throw std::invalid_argument("the number of rows and columns should be greate than 0!");
-    }
-
-}
-
 matrix::~matrix() {
 
 }
@@ -137,21 +130,21 @@ std::ostream &operator<<(std::ostream &os, const matrix &data) {
 }
 
 
-bool operator==(const matrix &lhs, const matrix &rhs) {
+bool operator==(const matrix &lhm, const matrix &rhm) {
 
-    if (lhs.dataMatrix.size() != rhs.dataMatrix.size()) {
+    if (lhm.dataMatrix.size() != rhm.dataMatrix.size()) {
         return false;
     }
 
-    for (int i = 0; i < lhs.dataMatrix.size(); i++) {
-        if (lhs.dataMatrix[i].size() != rhs.dataMatrix[i].size()) {
+    for (int i = 0; i < lhm.dataMatrix.size(); i++) {
+        if (lhm.dataMatrix[i].size() != rhm.dataMatrix[i].size()) {
             return false;
         }
 
-        for (int j = 0; j < lhs.dataMatrix[i].size(); j++) {
-            double d1 = lhs.dataMatrix[i][j];
-            double d2 = rhs.dataMatrix[i][j];
-            if (!isEqual(lhs.dataMatrix[i][j], rhs.dataMatrix[i][j])) {
+        for (int j = 0; j < lhm.dataMatrix[i].size(); j++) {
+            double d1 = lhm.dataMatrix[i][j];
+            double d2 = rhm.dataMatrix[i][j];
+            if (!isEqual(lhm.dataMatrix[i][j], rhm.dataMatrix[i][j])) {
                 return false;
             }
         }
@@ -160,8 +153,8 @@ bool operator==(const matrix &lhs, const matrix &rhs) {
     return true;
 }
 
-bool operator!=(const matrix &lhs, const matrix &rhs) {
-    return !(lhs == rhs);
+bool operator!=(const matrix &lhm, const matrix &rhm) {
+    return !(lhm == rhm);
 }
 
 matrix &matrix::operator++() {
@@ -254,14 +247,14 @@ matrix &matrix::operator-=(const matrix &rhs) {
     return *this;
 }
 
-matrix operator+(matrix lhs, const matrix &rhs) {
-    lhs += rhs;
-    return lhs;
+matrix operator+(matrix lhm, const matrix &rhm) {
+    lhm += rhm;
+    return lhm;
 }
 
-matrix operator-(matrix lhs, const matrix &rhs) {
-    lhs -= rhs;
-    return lhs;
+matrix operator-(matrix lhm, const matrix &rhm) {
+    lhm -= rhm;
+    return lhm;
 }
 
 matrix &matrix::operator*=(const matrix &rhs) {
@@ -298,9 +291,9 @@ matrix &matrix::operator*=(const matrix &rhs) {
     return *this;
 }
 
-matrix operator*(matrix lhs, const matrix &rhs) {
-    lhs *= rhs;
-    return lhs;
+matrix operator*(matrix lhm, const matrix &rhm) {
+    lhm *= rhm;
+    return lhm;
 }
 
 

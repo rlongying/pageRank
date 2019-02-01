@@ -9,4 +9,6 @@
 const double TOLERANCE = 0.000001;
 
 bool isEqual(const double& d1, const double& d2);
+
+void validatePositive(const int size);
 #endif //PAGERANK_UTILITIES_HPP
