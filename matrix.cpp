@@ -111,7 +111,7 @@ double matrix::get_value(int row, int col) const {
 
 }
 
-void matrix::validatePositive(int size) const{
+void matrix::validatePositive(int size) const {
     if (size <= 0) {
         throw std::invalid_argument("the number of rows and columns should be greate than 0!");
     }
@@ -143,15 +143,15 @@ bool operator==(const matrix &lhs, const matrix &rhs) {
         return false;
     }
 
-    for(int i = 0; i < lhs.dataMatrix.size(); i++){
-        if(lhs.dataMatrix[i].size() != rhs.dataMatrix[i].size()){
+    for (int i = 0; i < lhs.dataMatrix.size(); i++) {
+        if (lhs.dataMatrix[i].size() != rhs.dataMatrix[i].size()) {
             return false;
         }
 
-        for(int j = 0; j < lhs.dataMatrix[i].size(); j++){
+        for (int j = 0; j < lhs.dataMatrix[i].size(); j++) {
             double d1 = lhs.dataMatrix[i][j];
             double d2 = rhs.dataMatrix[i][j];
-            if (!isEqual(lhs.dataMatrix[i][j], rhs.dataMatrix[i][j])){
+            if (!isEqual(lhs.dataMatrix[i][j], rhs.dataMatrix[i][j])) {
                 return false;
             }
         }
@@ -165,14 +165,14 @@ bool operator!=(const matrix &lhs, const matrix &rhs) {
 }
 
 matrix &matrix::operator++() {
-    if(!dataMatrix.empty()){
-        for(int i = 0; i < dataMatrix.size(); i++){
-            for(int j = 0; j < dataMatrix[i].size(); j++){
-                dataMatrix[i][j] += 1.0;
-            }
-        }
 
+    for (int i = 0; i < dataMatrix.size(); i++) {
+        for (int j = 0; j < dataMatrix[i].size(); j++) {
+            dataMatrix[i][j] += 1.0;
+        }
     }
+
+
     return *this;
 }
 
@@ -183,14 +183,14 @@ matrix matrix::operator++(int) {
 }
 
 matrix &matrix::operator--() {
-    if(!dataMatrix.empty()){
-        for(int i = 0; i < dataMatrix.size(); i++){
-            for(int j = 0; j < dataMatrix[i].size(); j++){
-                dataMatrix[i][j] -= 1.0;
-            }
-        }
 
+    for (int i = 0; i < dataMatrix.size(); i++) {
+        for (int j = 0; j < dataMatrix[i].size(); j++) {
+            dataMatrix[i][j] -= 1.0;
+        }
     }
+
+
     return *this;
 }
 
@@ -198,6 +198,16 @@ matrix matrix::operator--(int) {
     matrix temp(*this);
     operator--();
     return temp;
+}
+
+matrix &matrix::operator=(matrix other) {
+    mySwap(*this, other);
+
+    return *this;
+}
+
+void mySwap(matrix &first, matrix &second) {
+    std::swap(first.dataMatrix, second.dataMatrix);
 }
 
 

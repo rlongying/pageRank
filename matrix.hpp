@@ -25,6 +25,11 @@ public:
      */
     matrix(int n);
 
+    //copy constructor
+    matrix (const matrix& other) : dataMatrix(other.dataMatrix){
+
+    }
+
     /**
      * populate a r*c matrix, and initilize each element with value 0.0
      * throw exception if r <= 0 or c <= 0
@@ -74,7 +79,10 @@ public:
      */
     matrix& operator--();
     matrix operator--(int);
-//    void print() const;
+
+
+    matrix& operator=(matrix other);
+
     ~matrix();
 
 private:
@@ -92,6 +100,8 @@ private:
     friend bool operator==(const matrix &lhs, const matrix &rhs);
 
     friend bool operator!=(const matrix &lhs, const matrix &rhs);
+
+    friend void mySwap(matrix& first, matrix& second);
 };
 
 
