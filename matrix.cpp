@@ -3,7 +3,9 @@
 //
 
 #include <cmath>
+#include <iomanip>
 #include "matrix.hpp"
+#include "utilities.hpp"
 
 matrix::matrix() : dataMatrix({{0.0}}) {
 
@@ -73,11 +75,11 @@ void matrix::set_value(const int row, const int col, double newVal) {
     validatePositive(col);
 
     if (!dataMatrix.empty()) {
-        if (row >= dataMatrix.size()) {
+        if (row > dataMatrix.size()) {
             throw std::out_of_range("input row is out of the range of this matrix(start with 1)");
         }
 
-        if (col >= dataMatrix[row - 1].size()) {
+        if (col > dataMatrix[row - 1].size()) {
             throw std::out_of_range("input column is out of the range of this matrix(start with 1)");
         }
 
@@ -94,11 +96,11 @@ double matrix::get_value(int row, int col) const {
     validatePositive(col);
 
     if (!dataMatrix.empty()) {
-        if (row >= dataMatrix.size()) {
+        if (row > dataMatrix.size()) {
             throw std::out_of_range("input row is out of the range of this matrix(start with 1)");
         }
 
-        if (col >= dataMatrix[row - 1].size()) {
+        if (col > dataMatrix[row - 1].size()) {
             throw std::out_of_range("input column is out of the range of this matrix(start with 1)");
         }
 
@@ -120,16 +122,46 @@ matrix::~matrix() {
 
 }
 
-void matrix::print() const {
+std::ostream &operator<<(std::ostream &os, const matrix &data) {
 
 
-    for (int i = 0; i < dataMatrix.size(); i++) {
-        for (int j = 0; j < dataMatrix[i].size(); j++) {
-            std::cout << dataMatrix[i][j] << " ";
+    for (int i = 0; i < data.dataMatrix.size(); i++) {
+        for (int j = 0; j < data.dataMatrix[i].size(); j++) {
+            std::cout << std::setw(4) << std::left << data.dataMatrix[i][j] << " ";
         }
         std::cout << std::endl;
     }
-    std::cout << "=====================" << std::endl;
+    std::cout << std::endl;
+
+    return os;
+}
+
+
+bool operator==(const matrix &lhs, const matrix &rhs) {
+
+    if (lhs.dataMatrix.size() != rhs.dataMatrix.size()) {
+        return false;
+    }
+
+    for(int i = 0; i < lhs.dataMatrix.size(); i++){
+        if(lhs.dataMatrix[i].size() != rhs.dataMatrix[i].size()){
+            return false;
+        }
+
+        for(int j = 0; j < lhs.dataMatrix[i].size(); j++){
+            double d1 = lhs.dataMatrix[i][j];
+            double d2 = rhs.dataMatrix[i][j];
+            if (!isEqual(lhs.dataMatrix[i][j], rhs.dataMatrix[i][j])){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool operator!=(const matrix &lhs, const matrix &rhs) {
+    return !(lhs == rhs);
 }
 
 

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "matrix.hpp"
+#include "utilities.hpp"
 
 using namespace std;
 
@@ -12,20 +13,25 @@ int main() {
     vector<double> dataV;
     int data;
 
-    while(readMatrix >> data){
+    while (readMatrix >> data) {
         dataV.push_back(data);
     }
 
     matrix test(dataV);
-    test.print();
 
-//    test.set_value(4, 4, 1.0);
-//    test.print();
+    matrix test2(test);
 
-//    cout << test.get_value(4, 6);
+    cout << test;
+    test.set_value(4, 4, 0.01);
+    cout << test;
 
-    test.clear();
-    test.print();
+    cout << test2;
+//
+//    test.set_value(4, 4, 1.523);
+//    cout << test;
+
+
+    cout << "compare matrix: " << (test == test2) << endl;
 
     return 0;
 }

@@ -61,14 +61,26 @@ public:
      */
     void clear();
 
-    void print() const;
-
+//    void print() const;
     ~matrix();
 
 private:
     void validatePositive(int size) const;
 
+    /**
+     * output the matrix in a square format
+     * @param os  output stream
+     * @param data matrix to be output
+     * @return
+     */
+    friend std::ostream& operator<< (std::ostream& os, const matrix& data );
 
+    //compare two matrix
+    friend bool operator== (const matrix& lhs, const matrix& rhs);
+
+    friend bool operator!= (const matrix& lhs, const matrix& rhs);
+
+//    bool isEqual(double &d, double &d1);
 };
 
 
