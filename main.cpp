@@ -3,6 +3,7 @@
 #include "matrix.hpp"
 #include "utilities.hpp"
 #include "q_matrix.hpp"
+#include "rank_matrix.hpp"
 
 using namespace std;
 
@@ -75,7 +76,7 @@ int main() {
 //    cout << isEqual(0.0000001, 0.00001) << endl;
 //    cout << isEqual(0.000001, 0.0000021) << endl;
 
-    q_matrix q_test(4);
+    rank_matrix q_test(4);
 
     cout << q_test << endl;
 
