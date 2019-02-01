@@ -10,6 +10,7 @@
 
 class matrix {
 
+protected:
     std::vector<std::vector<double>> dataMatrix;
 
 public:
