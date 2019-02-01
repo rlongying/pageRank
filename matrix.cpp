@@ -264,5 +264,44 @@ matrix operator-(matrix lhs, const matrix &rhs) {
     return lhs;
 }
 
+matrix &matrix::operator*=(const matrix &rhs) {
+    if (rhs.dataMatrix.empty() || dataMatrix.empty()) {
+        throw std::invalid_argument("matrix can not be empty");
+    }
+
+    //columns # of first operand should be equal to rows # of second operand
+    if((dataMatrix[0].size() != rhs.dataMatrix.size())){
+
+        throw std::invalid_argument
+        ("number of columns of first operand should be equal to number of rows of second operand!");
+    }
+
+    std::vector<std::vector<double>> temp;
+
+    for(int i = 0; i < dataMatrix.size(); i++){
+
+        std::vector<double> tempRow;
+        for(int j = 0; j < dataMatrix.size(); j++){
+
+            double tempValue = 0.0;
+            for(int k = 0; k < dataMatrix[0].size(); k++){
+                tempValue += dataMatrix[i][k] * rhs.dataMatrix[k][j];
+            }
+            //store every element of new matrix
+            tempRow.push_back(tempValue);
+        }
+        //store a row of new matrix
+        temp.push_back(tempRow);
+    }
+
+    dataMatrix = temp;
+    return *this;
+}
+
+matrix operator*(matrix lhs, const matrix &rhs) {
+    lhs *= rhs;
+    return lhs;
+}
+
 
 

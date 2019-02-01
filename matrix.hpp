@@ -26,7 +26,7 @@ public:
     matrix(int n);
 
     //copy constructor
-    matrix (const matrix& other) : dataMatrix(other.dataMatrix){
+    matrix(const matrix &other) : dataMatrix(other.dataMatrix) {
 
     }
 
@@ -70,22 +70,25 @@ public:
      * increment every element of matrix by 1.0
      * @return itself
      */
-    matrix& operator++();
+    matrix &operator++();
+
     matrix operator++(int);
 
     /**
      * decrement every element of matrix by 1.0
      * @return itself
      */
-    matrix& operator--();
+    matrix &operator--();
+
     matrix operator--(int);
 
-    matrix& operator=(matrix other);
+    matrix &operator=(matrix other);
 
-    matrix& operator+=(const matrix& rhs);
-    matrix& operator-=(const matrix& rhs);
+    matrix &operator+=(const matrix &rhs);
 
+    matrix &operator-=(const matrix &rhs);
 
+    matrix &operator*=(const matrix &rhs);
 
     ~matrix();
 
@@ -105,11 +108,13 @@ private:
 
     friend bool operator!=(const matrix &lhs, const matrix &rhs);
 
-    friend void mySwap(matrix& first, matrix& second);
+    friend void mySwap(matrix &first, matrix &second);
 
-    friend matrix operator+(matrix lhs, const matrix& rhs);
+    friend matrix operator+(matrix lhs, const matrix &rhs);
 
-    friend matrix operator-(matrix lhs, const matrix& rhs);
+    friend matrix operator-(matrix lhs, const matrix &rhs);
+
+    friend matrix operator*(matrix lhs, const matrix &rhs);
 };
 
 
