@@ -7,7 +7,7 @@
 
 #include "matrix.hpp"
 
-class connectivity_matrix : public matrix {
+class q_matrix : public matrix {
     const double P_FACTOR = 0.85;
 
 public:
