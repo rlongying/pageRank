@@ -15,3 +15,4 @@ rank_matrix::rank_matrix(int n) : matrix(n, 1) {
 
 }
 
+

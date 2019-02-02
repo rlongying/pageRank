@@ -12,6 +12,7 @@ class rank_matrix : public matrix {
 
 public:
     rank_matrix(int n);
+
 };
 
 #endif //PAGERANK_RAND_MATRIX_HPP

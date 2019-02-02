@@ -315,7 +315,7 @@ double matrix::sumColumn(int col) const {
     return sum;
 }
 
-matrix &matrix::calc_importance() {
+matrix &matrix::calc_probability() {
     if(!dataMatrix.empty()){
 
         //columns
@@ -362,7 +362,20 @@ matrix &matrix::operator*=(const double &rhs) {
     return *this;
 }
 
+size_t matrix::get_col() const {
+    return dataMatrix[0].size();
+}
 
+std::vector<double> matrix::vectorize() const {
+    std::vector<double> temp;
 
+    for(std::vector<double> v:dataMatrix){
+        for (double d:v) {
+            temp.push_back(d);
+        }
+    }
+
+    return temp;
+}
 
 

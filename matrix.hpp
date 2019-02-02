@@ -13,6 +13,13 @@ class matrix {
 protected:
     std::vector<std::vector<double>> dataMatrix;
 
+    /**
+     * sum of the value of a given column
+     * @param col  column number, start from 1
+     * @return the sum of the column
+     */
+    double sumColumn(int col) const;
+
 public:
 
     /**
@@ -62,6 +69,8 @@ public:
      */
     double get_value(int row, int col) const;
 
+    size_t get_col() const;
+
     /**
      * set all values in the matrix to 0.0
      */
@@ -109,17 +118,15 @@ public:
      * convert this matrix to a probability matrix
      * @return itself
      */
-    matrix& calc_importance();
-
-private:
-
+    matrix &calc_probability();
 
     /**
-     * sum of the value of a given column
-     * @param col  column number, start from 1
-     * @return the sum of the column
+     * convert matrix to a one dimension vector
+     * @return a one dimension vector contains all values in matrix
      */
-    double sumColumn(int col) const;
+    std::vector<double> vectorize() const;
+
+private:
 
     /**
      * output the matrix in a square format
@@ -143,8 +150,9 @@ private:
     friend matrix operator*(matrix lhm, const matrix &rhm);
 
     //overload * to scale the matrix
-    friend matrix operator*(const double& lhs, matrix rhm);
-    friend matrix operator*(matrix lhm, const double& rhs);
+    friend matrix operator*(const double &lhs, matrix rhm);
+
+    friend matrix operator*(matrix lhm, const double &rhs);
 
 };
 

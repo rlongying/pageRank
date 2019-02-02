@@ -1,53 +1,65 @@
 #include <iostream>
-#include <fstream>
-#include "matrix.hpp"
+//#include <fstream>
+//#include "matrix.hpp"
 #include "utilities.hpp"
-#include "q_matrix.hpp"
-#include "rank_matrix.hpp"
+//#include "q_matrix.hpp"
+//#include "rank_matrix.hpp"
 
 using namespace std;
 
 
 int main() {
 
-    ifstream readMatrix("../connectivity.txt");
+//    matrix conn_matrix = read_matrix_file("../connectivity.txt");
+    matrix conn_matrix = read_matrix_file("../c2");
 
-    vector<double> dataV;
-    cout << "dataV: " << dataV.size() << endl;
-    int data;
+    vector<double> rank = rank_page(conn_matrix);
 
-    while (readMatrix >> data) {
-        dataV.push_back(data);
-    }
+    report_rank(rank);
 
-    matrix test(dataV);
-    cout << test;
-    test.calc_importance();
+//    for (double d : rank) {
+//        cout << d << endl;
+//    }
 
-    q_matrix q_test(4);
-
-    matrix m;
-    m = 0.85 * test + (1- 0.85)* q_test;
-
-    cout << " m : " << endl << m;
-
-    rank_matrix r(4);
-
-    cout << " r : " << endl << r;
-
-    matrix temp(m);
-
-    matrix pre_temp;
-
-    temp = m * r;
-    cout << "temp before:" << endl << temp;
-    while(temp != pre_temp){
-        pre_temp = temp;
-        temp = m * temp;
-
-    }
-
-    cout << temp;
+//    ifstream readMatrix("../connectivity.txt");
+//    ifstream readMatrix("../c2");
+//
+//    vector<double> dataV;
+//    cout << "dataV: " << dataV.size() << endl;
+//    int data;
+//
+//    while (readMatrix >> data) {
+//        dataV.push_back(data);
+//    }
+//
+//    matrix test(dataV);
+//    cout << test;
+//    test.calc_probability();
+//
+//    q_matrix q_test(5);
+//
+//    matrix m;
+//    m = 0.85 * test + (1- 0.85)* q_test;
+//
+//    cout << " m : " << endl << m;
+//
+//    rank_matrix r(5);
+//
+//    cout << " r : " << endl << r;
+//
+//    matrix temp(m);
+//
+//    matrix pre_temp;
+//
+//    temp = m * r;
+//    cout << "temp before:" << endl << temp;
+//    while(temp != pre_temp){
+//        pre_temp = temp;
+//        temp = m * temp;
+//
+//    }
+//
+//    cout << temp;
 //    std::vector<std::vector<double>> v1({{1, 2, 3}, {4, 5, 6}});
 //    std::vector<std::vector<double>> v2({{7, 8}, {9, 10},{11, 12}});
 //
@@ -74,7 +86,7 @@ int main() {
 
 //    for(int v1)
 
-//    test.calc_importance();
+//    test.calc_probability();
 //    cout << test;
 //
 //    cout << ( 0.8 * test);
