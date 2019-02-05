@@ -10,8 +10,8 @@ using namespace std;
 
 int main() {
 
-//    matrix conn_matrix = read_matrix_file("../connectivity.txt");
-    matrix conn_matrix = read_matrix_file("../c2");
+//    matrix conn_matrix = read_matrix_file("../connectivity.txt"); // if you want see 4 rows matrix, uncomment this
+    matrix conn_matrix = read_matrix_file("../c2");  //file than contain 5 rows matrix
 
     vector<double> rank = rank_page(conn_matrix);
 

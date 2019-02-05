@@ -4,6 +4,8 @@
 
 #include <cmath>
 #include <iomanip>
+#include <stddef.h>
+#include <math.h>
 #include "matrix.hpp"
 #include "utilities.hpp"
 
