@@ -122,11 +122,11 @@ std::ostream &operator<<(std::ostream &os, const matrix &data) {
 
     for (int i = 0; i < data.dataMatrix.size(); i++) {
         for (int j = 0; j < data.dataMatrix[i].size(); j++) {
-            std::cout << std::setw(4) << std::left << data.dataMatrix[i][j] << " ";
+            os << std::setw(4) << std::left << data.dataMatrix[i][j] << " ";
         }
-        std::cout << std::endl;
+        os << std::endl;
     }
-    std::cout << std::endl;
+    os << std::endl;
 
     return os;
 }
